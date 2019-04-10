@@ -20,7 +20,7 @@ class Authorization {
         let token = jwt.sign(
           { username: username },
           config.secret,
-          { expiresIn: '1h' }
+          { expiresIn: '1d' }
         )
         //return token
         res.json({
@@ -28,6 +28,8 @@ class Authorization {
           message:"Authentication success",
           token:token
         })
+        console.log("signin token:"+"\n"+token);
+        
       }else{
         res.status(403).json({
           success:false,

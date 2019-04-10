@@ -11,10 +11,10 @@ let checkToken = (req, res, next) => {
     token = token.slice(7, token.length)
   }
   if (token) {
-    console.log(token);
-    
-    jwt.verify(token, config, (err, decoded) => {
+    console.log("verify token:" + "\n" + token);
+    jwt.verify(token, config.secret, (err, decoded) => {
       if (err) {
+        console.log(err);
         return res.json({
           success: false,
           message: "Token is not valid"
